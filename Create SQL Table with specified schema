@@ -1,0 +1,14 @@
+### Load libraries
+library(DBI)
+library(odbc)
+
+### Establish connection to database
+db <- dbConnect(odbc::odbc(),  Driver = "SQL Server", Server = "server_name",Schema = 'dbo', DataBase="db_name", Trusted_Connection="True")
+
+### Manually specify "dbo" schema, as schema defaults to user A-number otherwise
+table_id <- DBI::Id(schema = "schema",name = table_name")
+
+### Overwrite table with latest data
+DBI::dbWriteTable(conn = db,
+                         name = table_id,
+                         value = df,overwrite=TRUE)
