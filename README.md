@@ -3,7 +3,8 @@
 ## For general-use script templates
 
 
-### Contents:
-* R SQL Server database utilities
-* R Oracle database utilities
-* Oracle database administration utilities
+## Contents:
+* SQL Server (T-SQL) database utilities for both R and Python
+* Data science utilities for both R and Python
+* Oracle (PL/SQL) database utilities for R
+* Database administration utilities
