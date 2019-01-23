@@ -1,3 +1,4 @@
 # Use file extension to override language of file:
+*.sql linguist-detectable=true
 *.sql linguist-language=SQL
 *.py linguist-language=Python
