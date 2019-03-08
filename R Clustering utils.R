@@ -98,6 +98,15 @@ segment_customers %>%
 # Dummify data
 dummy_data <- dummy.data.frame(data)
 
+# Calculate the Distance
+dist_survey <- dist(dummy_survey,method = 'binary')
+
+# Print the Original Data
+job_survey
+
+# Print the Distance Matrix
+dist_survey
+
 ###############################################################################################################
 
 # K-Means Clustering
