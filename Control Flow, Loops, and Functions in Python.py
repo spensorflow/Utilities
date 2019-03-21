@@ -31,7 +31,44 @@ for drink in num_drinks:
         
 ################################
 
-# Lambda function
+# Defining Functions
+
+# Binge status for males
+def binge_male(num_drinks):
+    if num_drinks <= 5:
+        return('non-binge')
+    else:
+        return('binge')
+        
+# Check function output
+print(binge_male(6))
+
+
+# Binge status for females
+def binge_female(num_drinks):
+    if num_drinks <= 4:
+        return('non-binge')
+    else:
+        return('binge')
+
+# Check function output
+print(binge_female(2))
+
+
+# A function that returns a binge status given a sex and number of drinks, based on previously defined 
+def binge_status(sex, num_drinks):
+    if sex == 'male':
+        return binge_male(num_drinks)
+    else:
+        return binge_female(num_drinks)
+
+## Run example
+print(binge_status('male',6))
+
+
+################################
+
+# Lambda (anonymous) function
 # A function that takes a value and returns its square
 def sq_func(x):
     return(x**2)
@@ -43,9 +80,23 @@ sq_lambda = lambda x: sq_func(x)
 print(sq_lambda(3))
 
 ################################
-# Map function
+# Map function (equivalent of R apply function)
 # map the binge_male function to num_drinks
 print(list(map(binge_male, num_drinks)))
 
 # map the binge_female function to num_drinks
 print(list(map(binge_female, num_drinks)))
+
+
+##################################
+ # List Comprehension (alternative to a for loop)
+    
+# Append dataframes into list with for loop
+dfs_list = [1,2,3]
+for f in inflam_files:
+    dat = pd.read_csv(f)
+    dfs_list.append(dat)
+
+# Re-write the provided for loop as a list comprehension: dfs_comp
+dfs_comp = [pd.read_csv(i) for i in inflam_files]
+print(dfs_comp)
