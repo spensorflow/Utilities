@@ -100,3 +100,12 @@ for f in inflam_files:
 # Re-write the provided for loop as a list comprehension: dfs_comp
 dfs_comp = [pd.read_csv(i) for i in inflam_files]
 print(dfs_comp)
+
+#################################
+# Dictionary Comprehension
+
+# Write a dict comprehension in which the key is the first element and the value is the second
+tf_dict = {key:value for key,value in twitter_followers}
+
+# Print tf_dict
+print(tf_dict)
