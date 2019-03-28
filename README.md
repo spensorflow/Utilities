@@ -9,6 +9,6 @@
   * Linear and Logistic Regression
   * Classification
   * Clustering
-  * Text minining
+  * Text mining
 * Oracle (PL/SQL) database utilities for R
 * Database administration utilities
