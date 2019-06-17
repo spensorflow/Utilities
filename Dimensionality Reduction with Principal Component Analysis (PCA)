@@ -1,0 +1,53 @@
+# Perform scaled PCA: pr.out
+pr.out <- prcomp(df,scale = TRUE)
+
+# Inspect model output: PC1 - PC# of feature variables
+# pr.out$center -  the column means used to center to the data, or FALSE if the data weren't centered
+# pr.out$scale - the column standard deviations used to scale the data, or FALSE if the data weren't scaled
+# pr.out$rotation - the directions of the principal component vectors in terms of the original features/variables. This information allows you to define new data in terms of the original principal components
+# pr.out$x - the value of each observation in the original dataset projected to the principal components
+summary(pr.out)
+pr.out
+
+# Biplot
+## Plot the PCA output to compare the loadings of various components
+biplot(pr.out)
+
+
+# Explaining variance
+## Data prep
+### Variability of each principal component: pr.var (the square of the standard deviations of the principal components (i.e. the variance). The standard deviation of the principal components is available in the sdev component of the PCA model object.)
+pr.var <- pr.out$sdev^2
+
+### Variance explained by each principal component: pve ( the proportion of the variance explained, calculated by dividing pr.var by the total variance explained by all principal components.)
+pve <- pr.var/ sum(pr.var)
+
+# Do scree plot variance explained for each principal component
+plot(pve, xlab = "Principal Component",
+     ylab = "Proportion of Variance Explained",
+     ylim = c(0, 1), type = "b")
+
+# Do scree plot cumulative proportion of variance explained
+plot(cumsum(pve), xlab = "Principal Component",
+     ylab = "Cumulative Proportion of Variance Explained",
+     ylim = c(0, 1), type = "b")
+     
+     
+#######################################################
+# PCA with and without scaling can make a difference
+
+# Mean of each variable
+colMeans(df)
+
+# Standard deviation of each variable
+apply(df, 2, sd)
+
+# PCA model with scaling: pr.with.scaling
+pr.with.scaling <- prcomp(df,scale = TRUE)
+
+# PCA model without scaling: pr.without.scaling
+pr.without.scaling <- prcomp(df,scale = FALSE)
+
+# Create biplots of both for comparison
+biplot(pr.with.scaling)
+biplot(pr.without.scaling)
