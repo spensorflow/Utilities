@@ -109,3 +109,23 @@ tf_dict = {key:value for key,value in twitter_followers}
 
 # Print tf_dict
 print(tf_dict)
+
+
+####################
+# For loop and if else for computing average within a group
+opened_file = open('AppleStore.csv')
+from csv import reader
+read_file = reader(opened_file)
+apps_data = list(read_file)
+
+free_apps_ratings = []
+for row in apps_data[1:]:
+    rating = float(row[7])
+    # Complete the code from here
+    price = float(row[4])
+    
+    if price == 0.0:
+        free_apps_ratings.append(rating)
+        
+        
+avg_rating_free = sum(free_apps_ratings) / len(free_apps_ratings)
